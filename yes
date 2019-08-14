@@ -1,0 +1,38 @@
+#!/bin/bash
+
+HEIGHT=15
+WIDTH=40
+CHOICE_HEIGHT=4
+BACKTITLE="Desktop adder"
+TITLE="Desktop Installer"
+MENU="Choose one of the following destops:"
+
+OPTIONS=(1 "XFCE"
+         2 "LXQT"
+         3 "LXDE"
+         4 "MATE")
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+        1)
+            wget https://raw.githubusercontent.com/Techriz/AndronixOrigin/master/APT/XFCE4/xfce4_de.sh && bash xfce4_de.sh 
+            ;;
+        2)
+            wget https://raw.githubusercontent.com/Techriz/AndronixOrigin/master/APT/LXQT/lxqt_de.sh && bash lxqt_de.sh
+            ;;
+        3)
+           wget https://raw.githubusercontent.com/Techriz/AndronixOrigin/master/APT/LXDE/lxde_de.sh && bash lxde_de.sh
+            ;;
+
+        4) 
+            wget https://raw.githubusercontent.com/Techriz/AndronixOrigin/master/APT/MATE/mate_de.sh && bash mate_de.sh
+            ;;
+esac
